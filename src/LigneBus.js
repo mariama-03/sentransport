@@ -1,9 +1,9 @@
 import './LigneBus.css';
 
-function LigneBus({ numero, depart, arrivee, arrets }) {
+function LigneBus({ numero, depart, arrivee, arrets, couleur }) {
   return (
     <div className="ligne-bus">
-      <div className="ligne-numero">
+      <div className="ligne-numero" style={{ backgroundColor: couleur }}>
         {numero}
       </div>
       <div className="ligne-info">

@@ -10,6 +10,9 @@ import DetailLigne from './DetailLigne';
 
 
 function App() {
+
+const [compteur, setcompteur] = useState(0); 
+
 const [recherche, setRecherche] = useState("");
 const [ligneSelectionnee, setLigneSelectionnee] = useState(null);
 const lignes = [
@@ -43,16 +46,25 @@ function handleClickLigne(ligne) {
   return (
     <div className="App">
       <Header />
+      <p style={{textAlign: "center"}}>Vous avez effectué {compteur} recherche(s)</p>
       <main className="contenu">
         <Recherche
           valeur={recherche}
-          onChange={setRecherche}
+          //prendre en compte le nombre de recherche
+          //onChange={setRecherche}
+          onChange={valeur => {
+          setRecherche(valeur);
+          setcompteur(compteur + 1);
+        }}
+
         />
         <p className="resultat-recherche">
-          {lignesFiltrees.length} ligne
-          {lignesFiltrees.length > 1 ? 's' : ''} trouvee
+          {/* Afficher aucune ligne trouvée */}
+          {lignesFiltrees.length === 0 ? 'Aucune' : lignesFiltrees.length} ligne
+          {lignesFiltrees.length > 1 ? 's' : ''} trouvée
           {lignesFiltrees.length > 1 ? 's' : ''}
         </p>
+
         {lignesFiltrees.map(ligne => (
           <LigneBus
             key={ligne.id}

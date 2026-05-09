@@ -33,7 +33,9 @@
 
 .ligne-info {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
 }
 
 .ligne-trajet {
@@ -45,5 +47,13 @@
 .ligne-arrets {
   font-size: 0.85rem;
   color: #7f8c8d;
-  margin-top: 4px;
+  margin-top: 0;
+}
+.ligne-bus-active {
+  border-left: 4px solid #e67e22;
+  background-color: #fef9f3;
+}
+
+.ligne-bus-active .ligne-numero {
+  background-color: #e67e22;
 }

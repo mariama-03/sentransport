@@ -13,6 +13,7 @@ def accueil():
         "message": "Bienvenue sur l'API SenTransport !",
         "endpoints": ["/lignes", "/lignes/<id>"]
     })
+
 @app.route("/lignes")
 def get_lignes():
     return jsonify(lignes)
@@ -25,8 +26,6 @@ def get_ligne(ligne_id):
     if ligne is None:
         return jsonify({"erreur": "Ligne non trouvee"}), 404
     return jsonify(ligne)
-if __name__ == "__main__":
-    app.run(debug=True, port=5000)
 
 @app.route("/arrets")
 def get_arrets():
@@ -47,7 +46,6 @@ def get_stats():
         "ligne_plus_darrets": {"numero": ligne_max["numero"], "arrets": ligne_max["arrets"]}
     })
 
-
 # Modifier l'import : from flask import Flask, jsonify, request
 @app.route("/lignes/recherche")
 def rechercher_lignes():
@@ -55,3 +53,6 @@ def rechercher_lignes():
     if not q: return jsonify(lignes)
     resultats = [l for l in lignes if q in l["depart"].lower() or q in l["arrivee"].lower()]
     return jsonify(resultats)
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)

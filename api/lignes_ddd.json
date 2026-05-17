@@ -10,5 +10,9 @@
   { "id": 5, "numero": "8", "depart": "Almadies", "arrivee": "Colobane", "arrets": 16, "couleur": "#27ae60",
     "listeArrets": ["Almadies", "Ngor", "Yoff", "Ouest Foire", "Liberte 6", "Colobane"] },
   { "id": 6, "numero": "12", "depart": "Yoff", "arrivee": "Sandaga", "arrets": 11, "couleur": "#eef73f",
-    "listeArrets": ["Yoff Village", "Aeroport LSS", "Parcelles U17", "Grand Yoff", "HLM", "Sandaga"] }
+    "listeArrets": ["Yoff Village", "Aeroport LSS", "Parcelles U17", "Grand Yoff", "HLM", "Sandaga"] },
+  { "id": 7, "numero": "27", "depart": "Thiaroye", "arrivee": "Plateau", "arrets": 15, "couleur": "#16a085",
+    "listeArrets": ["Thiaroye Gare", "Pikine", "Hann", "Colobane", "Kermel", "Plateau"] },
+  { "id": 8, "numero": "34", "depart": "Rufisque", "arrivee": "Colobane", "arrets": 20, "couleur": "#c0392b",
+    "listeArrets": ["Rufisque Centre", "Sangalkam", "Keur Massar", "Yeumbeul", "Thiaroye", "Colobane"] }
 ]

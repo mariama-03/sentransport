@@ -18,7 +18,9 @@ const [chargement, setChargement] = useState(true);
 const [erreur,     setErreur]     = useState(null);
 const [lignes, setLignes] = useState([]);
 
-useEffect(() => {
+function chargerLignes() {
+  setChargement(true);
+  setErreur(null);
   fetch("http://localhost:5000/lignes")
     .then((response) => {
       if (!response.ok) {
@@ -34,7 +36,29 @@ useEffect(() => {
       setErreur(error.message);
       setChargement(false);
     });
+}
+
+
+useEffect(() => {
+  chargerLignes();
 }, []);
+// useEffect(() => {
+//   fetch("http://localhost:5000/lignes")
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error("Erreur serveur : " + response.status);
+//       }
+//       return response.json();
+//     })
+//     .then((data) => {
+//       setLignes(data);
+//       setChargement(false);
+//     })
+//     .catch((error) => {
+//       setErreur(error.message);
+//       setChargement(false);
+//     });
+// }, []);
 
  // Filtrer les lignes selon le texte tape
   const lignesFiltrees = lignes.filter(l =>
@@ -47,9 +71,14 @@ function handleClickLigne(ligne) {
   if (ligneSelectionnee && ligneSelectionnee.id === ligne.id) {
     setLigneSelectionnee(null);
   } else {
-    setLigneSelectionnee(ligne);
+    fetch("http://localhost:5000/lignes/" + ligne.id)
+      .then((response) => response.json())
+      .then((data) => {
+        setLigneSelectionnee(data);
+      });
   }
 }
+
 if (chargement) {
   return (
     <div className="App">
@@ -80,6 +109,7 @@ if (erreur) {
       <Header />
       <p style={{textAlign: "center"}}>Vous avez effectué {compteur} recherche(s)</p>
       <main className="contenu">
+        <button className="bouton-recharger" onClick={chargerLignes}>Recharger</button>
         <Recherche
           valeur={recherche}
           //prendre en compte le nombre de recherche
@@ -98,8 +128,8 @@ if (erreur) {
         </p>
 
         {lignesFiltrees.map(ligne => (
+          <div key={ligne.id}>
           <LigneBus
-            key={ligne.id}
             numero={ligne.numero}
             depart={ligne.depart}
             arrivee={ligne.arrivee}
@@ -107,10 +137,13 @@ if (erreur) {
             estSelectionnee={ligneSelectionnee
               && ligneSelectionnee.id === ligne.id}
             onClick={() => handleClickLigne(ligne)}
-          />
+           />
+         {ligneSelectionnee && ligneSelectionnee.id === ligne.id && (
+             <DetailLigne ligne={ligneSelectionnee} /> )}
+ </div> 
         ))}
-        {ligneSelectionnee
-          && <DetailLigne ligne={ligneSelectionnee} />}
+        {/* {ligneSelectionnee
+          && <DetailLigne ligne={ligneSelectionnee} />} */}
        </main>
       <Footer />
     </div>

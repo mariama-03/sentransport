@@ -35,6 +35,7 @@
     margin-right: 12px;
   }
 }
+}
 .message-chargement {
   text-align: center;
   color: #7f8c8d;
@@ -57,4 +58,19 @@
   font-family: monospace;
   font-size: 0.9rem;
 }
+
+.bouton-recharger {
+  display: block;
+  margin: 10px auto;
+  padding: 8px 20px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.bouton-recharger:hover {
+  background-color: #068f3f;
 }

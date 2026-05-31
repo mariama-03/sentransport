@@ -29,3 +29,39 @@
     height: 300px;
   }
 }
+
+.marqueur-proche {
+  filter: hue-rotate(120deg) saturate(2);
+}
+
+.bouton-centrer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  padding: 8px 12px;
+  background: #0a6e31;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.bouton-centrer:hover {
+  background: #085a28;
+}
+
+.liste-proches {
+  list-style: none;
+  padding: 8px 12px;
+  margin: 0 0 12px 0;
+  background: #f0f4f8;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.liste-proches li {
+  padding: 4px 0;
+  color: #2c3e50;
+}

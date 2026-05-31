@@ -8,7 +8,10 @@ import Footer from './Footer';
 import ListeLignes from './ListeLignes';
 import DetailLigne from './DetailLigne';
 import Carte from './Carte';
-
+import Meteo from './Meteo';
+import SignalerIncident from './SignalerIncident';
+import ListeIncidents from './ListeIncidents';
+import Previsions from './Previsions';
 
 function App() {
 
@@ -110,6 +113,8 @@ if (erreur) {
       <Header />
       <p style={{textAlign: "center"}}>Vous avez effectué {compteur} recherche(s)</p>
       <main className="contenu">
+        <Meteo />
+        <Previsions /> 
         <button className="bouton-recharger" onClick={chargerLignes}>Recharger</button>
         <Recherche
           valeur={recherche}
@@ -145,7 +150,9 @@ if (erreur) {
         ))}
         {/* {ligneSelectionnee
           && <DetailLigne ligne={ligneSelectionnee} />} */}  
-       <Carte />   
+       <Carte /> 
+       <SignalerIncident />  
+       <ListeIncidents />
        </main>
       <Footer />
     </div>

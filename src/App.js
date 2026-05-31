@@ -7,6 +7,7 @@ import LigneBus from './LigneBus';
 import Footer from './Footer';
 import ListeLignes from './ListeLignes';
 import DetailLigne from './DetailLigne';
+import Carte from './Carte';
 
 
 function App() {
@@ -140,10 +141,11 @@ if (erreur) {
            />
          {ligneSelectionnee && ligneSelectionnee.id === ligne.id && (
              <DetailLigne ligne={ligneSelectionnee} /> )}
- </div> 
+        </div> 
         ))}
         {/* {ligneSelectionnee
-          && <DetailLigne ligne={ligneSelectionnee} />} */}
+          && <DetailLigne ligne={ligneSelectionnee} />} */}  
+       <Carte />   
        </main>
       <Footer />
     </div>
